@@ -68,7 +68,8 @@ html,body,#wrapper {
 	z-index: 999;
 	left: 0;
 	top: 0;
-	/*width: 200px;*/
+	width: 150px;
+	font-size: 0.8em;
 	text-align: center;
 	color: rgba(255,255,255,1);
 }

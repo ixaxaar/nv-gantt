@@ -129,19 +129,17 @@ d3.gantt = function() {
             })
             .on('mouseenter', function(d) {
                 tooltip.style("left", (margin.left + x(d.startDate)) + 'px');
-                tooltip.style("top", y(d.taskName) + 'px');
+                tooltip.style("top", y(d.taskName)-y.rangeBand()/2 + 'px');
                 tooltip.text(
-                    'Start:' + d.startDate +
-                    '\nEnd: ' + d.endDate +
-                    '\n Value:' + d.value
+                    'Start: ' + moment(d.startDate).format('lll') +
+                    '\n End: ' + moment(d.endDate).format('lll') +
+                    '\n Value: ' + d.value
                 )
                 tooltip.style("visibility", "visible");
             })
             .on('mouseleave', function(d) {
                 tooltip.style("visibility", "hidden");
             })
-            .append('svg:title')
-            .text(function(d) { return d.value; })
         ;
 
         bar.append('text')
