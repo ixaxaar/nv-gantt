@@ -83,6 +83,14 @@ d3.gantt = function() {
         initAxis();
         var that = this;
 
+        var tooltip = d3.select("body")
+            .append("div")
+            .style("position", "absolute")
+            .attr("class" ,"gantt-tooltip")
+            .style("visibility", "hidden")
+            .text("a simple tooltip")
+        ;
+
         var svg = d3.select("body")
             .append("svg")
             .attr("class", "chart")
@@ -118,6 +126,19 @@ d3.gantt = function() {
                 var $this = d3.select(this);
                 gantt.timeDomain([d.startDate, d.endDate])
                 gantt.redraw(tasks);
+            })
+            .on('mouseenter', function(d) {
+                tooltip.style("left", (margin.left + x(d.startDate)) + 'px');
+                tooltip.style("top", y(d.taskName) + 'px');
+                tooltip.text(
+                    'Start:' + d.startDate +
+                    '\nEnd: ' + d.endDate +
+                    '\n Value:' + d.value
+                )
+                tooltip.style("visibility", "visible");
+            })
+            .on('mouseleave', function(d) {
+                tooltip.style("visibility", "hidden");
             })
             .append('svg:title')
             .text(function(d) { return d.value; })
@@ -182,7 +203,7 @@ d3.gantt = function() {
             })
             .attr('dx', function(d) {
                 // to small to be displayed?
-                if ((x(d.endDate) - x(d.startDate))/2 < d.value.length)
+                if ((x(d.endDate) - x(d.startDate))/2 < d.value.length*3)
                     return -10000;
                 else return (x(d.endDate) - x(d.startDate))/2 - (d.value.length*3);
             })

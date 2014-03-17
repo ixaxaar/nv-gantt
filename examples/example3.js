@@ -1,41 +1,119 @@
 var tasks = [
     {
-        "startDate":new Date("Sun Dec 09 01:36:45 EST 2012"),
-        "endDate":new Date("Sun Dec 09 02:36:45 EST 2012"),
+        "startDate":new Date("Mon Mar 1 2014 17:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 2 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"E Job",
         "status":"SUCCEEDED",
         "value": "O lala 1"
     },
     {
-        "startDate":new Date("Sun Dec 11 01:36:45 EST 2012"),
-        "endDate":new Date("Sun Dec 12 02:36:45 EST 2012"),
+        "startDate":new Date("Mon Mar 2 2014 17:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 3 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"E Job",
         "status":"FAILED",
         "value": "O lala 2"
     }
     ,
     {
-        "startDate":new Date("Sun Dec 12 02:36:45 EST 2012"),
-        "endDate":new Date("Sun Dec 14 02:36:45 EST 2012"),
+        "startDate":new Date("Mon Mar 3 2014 17:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 4 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"E Job",
         "status":"SUCCEEDED",
         "value": "O lala 3"
     }
     ,
     {
-        "startDate":new Date("Sun Dec 14 02:36:45 EST 2012"),
-        "endDate":new Date("Sun Dec 16 02:36:45 EST 2012"),
+        "startDate":new Date("Mon Mar 4 2014 17:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"E Job",
         "status":"FAILED",
         "value": "O lala 4"
     }
     ,
     {
-        "startDate":new Date("Sun Dec 16 02:36:45 EST 2012"),
-        "endDate":new Date("Sun Dec 18 02:36:45 EST 2012"),
+        "startDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 6 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"E Job",
         "status":"SUCCEEDED",
         "value": "O lala 5"
+    }
+    ,
+        {
+        "startDate":new Date("Mon Mar 1 2014 17:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 2 2014 17:16:02 GMT+0530 (IST)"),
+        "taskName":"A Job",
+        "status":"SUCCEEDED",
+        "value": "O lala 1"
+    },
+    {
+        "startDate":new Date("Mon Mar 2 2014 17:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 3 2014 17:16:02 GMT+0530 (IST)"),
+        "taskName":"A Job",
+        "status":"FAILED",
+        "value": "O lala 2"
+    }
+    ,
+    {
+        "startDate":new Date("Mon Mar 3 2014 17:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 4 2014 17:16:02 GMT+0530 (IST)"),
+        "taskName":"A Job",
+        "status":"SUCCEEDED",
+        "value": "O lala 3"
+    }
+    ,
+    {
+        "startDate":new Date("Mon Mar 4 2014 17:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
+        "taskName":"A Job",
+        "status":"FAILED",
+        "value": "O lala 4"
+    }
+    ,
+    {
+        "startDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 6 2014 17:16:02 GMT+0530 (IST)"),
+        "taskName":"A Job",
+        "status":"SUCCEEDED",
+        "value": "O lala 5"
+    }
+    ,
+        {
+        "startDate":new Date("Mon Mar 1 2014 17:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 2 2014 17:16:02 GMT+0530 (IST)"),
+        "taskName":"N Job",
+        "status":"SUCCEEDED",
+        "value": "O haha 1"
+    },
+    {
+        "startDate":new Date("Mon Mar 2 2014 17:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 3 2014 17:16:02 GMT+0530 (IST)"),
+        "taskName":"N Job",
+        "status":"FAILED",
+        "value": "O haha 2"
+    }
+    ,
+    {
+        "startDate":new Date("Mon Mar 3 2014 17:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 4 2014 17:16:02 GMT+0530 (IST)"),
+        "taskName":"N Job",
+        "status":"SUCCEEDED",
+        "value": "O haha 3"
+    }
+    ,
+    {
+        "startDate":new Date("Mon Mar 4 2014 17:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
+        "taskName":"N Job",
+        "status":"FAILED",
+        "value": "O haha 4"
+    }
+    ,
+    {
+        "startDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 6 2014 17:16:02 GMT+0530 (IST)"),
+        "taskName":"N Job",
+        "status":"SUCCEEDED",
+        "value": "O haha 5"
     }
 ];
 

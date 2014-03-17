@@ -19,6 +19,9 @@ html,body,#wrapper {
 	fill: #669911;
 	cursor: pointer;
 }
+.bar:hover {
+	fill: rgba(166,199,111,1);
+}
 .text-bar {
 	fill: #000000;
 }
@@ -26,6 +29,9 @@ html,body,#wrapper {
 .bar-failed {
 	fill: #666666;
 	cursor: pointer;
+}
+.bar-failed:hover {
+	fill: rgba(199,199,199,1);
 }
 .text-bar-failed {
 	fill: #000000;
@@ -54,3 +60,15 @@ html,body,#wrapper {
 	fill: #000000;
 }
 
+
+.gantt-tooltip {
+	padding: 10px;
+	border-radius: 6px;
+	background-color: rgba(0,0,0,0.7);
+	z-index: 999;
+	left: 0;
+	top: 0;
+	/*width: 200px;*/
+	text-align: center;
+	color: rgba(255,255,255,1);
+}
