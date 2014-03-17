@@ -1,0 +1,70 @@
+<h2>Introduction</h2>
+<p>A basic implementation of a Gantt Chart using D3.js. Here is a example [Example 1] (<a href="http://bl.ocks.org/dk8996/5534835">http://bl.ocks.org/dk8996/5534835</a>) and another one [Example 2] (<a href="http://bl.ocks.org/dk8996/5449641">http://bl.ocks.org/dk8996/5449641</a>).</p>
+<p><img src="https://raw.github.com/dk8996/Gantt-Chart/master/examples/screenshot1.png" alt="screenshot"></p>
+<h2>Getting Started</h2>
+<h3>Data</h3>
+<p>Create a array of all your data.</p>
+<pre><code class="lang-javascript">var tasks = [
+
+{
+    &quot;startDate&quot;: new Date(&quot;Sun Dec 09 01:36:45 EST 2012&quot;),
+    &quot;endDate&quot;: new Date(&quot;Sun Dec 09 02:36:45 EST 2012&quot;),
+    &quot;taskName&quot;: &quot;E Job&quot;,
+    &quot;status&quot;: &quot;FAILED&quot;
+},
+
+{
+    &quot;startDate&quot;: new Date(&quot;Sun Dec 09 04:56:32 EST 2012&quot;),
+    &quot;endDate&quot;: new Date(&quot;Sun Dec 09 06:35:47 EST 2012&quot;),
+    &quot;taskName&quot;: &quot;A Job&quot;,
+    &quot;status&quot;: &quot;RUNNING&quot;
+}];</code></pre>
+<h3>Style</h3>
+<p>Create a map between task status and css class, this is optional.</p>
+<pre><code class="lang-javascript">var taskStatus = {
+    &quot;SUCCEEDED&quot;: &quot;bar&quot;,
+    &quot;FAILED&quot;: &quot;bar-failed&quot;,
+    &quot;RUNNING&quot;: &quot;bar-running&quot;,
+    &quot;KILLED&quot;: &quot;bar-killed&quot;
+};</code></pre>
+<pre><code class="lang-css">  .bar {
+      fill: #33b5e5;
+  }
+
+  .bar-failed {
+    fill: #CC0000;
+  }
+
+  .bar-running {
+      fill: #669900;
+  }
+
+  .bar-succeeded {
+    fill: #33b5e5;
+  }
+
+  .bar-killed {
+      fill: #ffbb33;
+  }</code></pre>
+<h3>Task Names</h3>
+<p>Create a array of task names, they will be display on they y-axis in the order given to the array.</p>
+<pre><code class="lang-javascript">var taskNames = [ &quot;D Job&quot;, &quot;P Job&quot;, &quot;E Job&quot;, &quot;A Job&quot;, &quot;N Job&quot; ];</code></pre>
+<h3>Create a Simple Gantt-Chart</h3>
+<p>Create a simple Gantt-Chart</p>
+<pre><code class="lang-javascript">var gantt = d3.gantt().taskTypes(taskNames).taskStatus(taskStatus);
+gantt(tasks);</code></pre>
+<h2>Dependencies &amp; Building</h2>
+<p>Relies on the fantastic <a href="http://mbostock.github.com/d3/">D3 visualization library</a> to do lots of the heavy lifting for stacking and rendering to SVG.</p>
+<h2>License</h2>
+<p>   Copyright 2012 Dimitry Kudryavtsev</p>
+<p>   Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at</p>
+<pre><code>   http://www.apache.org/licenses/LICENSE-2.0</code></pre>
+<p>   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.</p>
+<p>   <a href="http://githalytics.com/dk8996/Gantt-Chart"><img src="https://cruel-carlota.pagodabox.com/c088458a0319a78b63aaea9c54fba4de" alt="githalytics.com alpha" title="githalytics.com"></a></p>
+

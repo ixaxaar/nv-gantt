@@ -16,57 +16,41 @@ html,body,#wrapper {
 }
 
 .bar {
-	fill: #33b5e5;
+	fill: #669911;
+	cursor: pointer;
+}
+.text-bar {
+	fill: #000000;
 }
 
 .bar-failed {
-	fill: #CC0000;
+	fill: #666666;
+	cursor: pointer;
+}
+.text-bar-failed {
+	fill: #000000;
 }
 
 .bar-running {
 	fill: #669900;
+	cursor: pointer;
+}
+.text-bar-running {
+	fill: #000000;
 }
 
 .bar-succeeded {
-	fill: #33b5e5;
+	fill: #669911;
+	cursor: pointer;
+}
+.text-bar-succeeded {
+	fill: #000000;
 }
 
 .bar-killed {
 	fill: #ffbb33;
 }
-
-#forkme_banner {
-	display: block;
-	position: absolute;
-	top: 0;
-	right: 10px;
-	z-index: 10;
-	padding: 10px 50px 10px 10px;
-	color: #fff;
-	background:
-		url('http://dk8996.github.io/Gantt-Chart/images/blacktocat.png')
-		#0090ff no-repeat 95% 50%;
-	font-weight: 700;
-	box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-	border-bottom-left-radius: 2px;
-	border-bottom-right-radius: 2px;
-	text-decoration: none;
+.text-bar-killed {
+	fill: #000000;
 }
 
-#twittme_banner {
-	display: block;
-	position: absolute;
-	top: 0;
-	right: 180px;
-	z-index: 10;
-	padding: 10px 50px 10px 10px;
-	color: #fff;
-	background:
-		url('http://dk8996.github.io/Gantt-Chart/images/twitter.png')
-		#0090ff no-repeat 95% 50%;
-	font-weight: 700;
-	box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-	border-bottom-left-radius: 2px;
-	border-bottom-right-radius: 2px;
-	text-decoration: none;
-}

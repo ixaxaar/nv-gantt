@@ -1,11 +1,49 @@
 var tasks = [
-{"startDate":new Date("Sun Dec 09 01:36:45 EST 2012"),"endDate":new Date("Sun Dec 09 02:36:45 EST 2012"),"taskName":"E Job","status":"RUNNING"}];
+    {
+        "startDate":new Date("Sun Dec 09 01:36:45 EST 2012"),
+        "endDate":new Date("Sun Dec 09 02:36:45 EST 2012"),
+        "taskName":"E Job",
+        "status":"SUCCEEDED",
+        "value": "O lala 1"
+    },
+    {
+        "startDate":new Date("Sun Dec 11 01:36:45 EST 2012"),
+        "endDate":new Date("Sun Dec 12 02:36:45 EST 2012"),
+        "taskName":"E Job",
+        "status":"FAILED",
+        "value": "O lala 2"
+    }
+    ,
+    {
+        "startDate":new Date("Sun Dec 12 02:36:45 EST 2012"),
+        "endDate":new Date("Sun Dec 14 02:36:45 EST 2012"),
+        "taskName":"E Job",
+        "status":"SUCCEEDED",
+        "value": "O lala 3"
+    }
+    ,
+    {
+        "startDate":new Date("Sun Dec 14 02:36:45 EST 2012"),
+        "endDate":new Date("Sun Dec 16 02:36:45 EST 2012"),
+        "taskName":"E Job",
+        "status":"FAILED",
+        "value": "O lala 4"
+    }
+    ,
+    {
+        "startDate":new Date("Sun Dec 16 02:36:45 EST 2012"),
+        "endDate":new Date("Sun Dec 18 02:36:45 EST 2012"),
+        "taskName":"E Job",
+        "status":"SUCCEEDED",
+        "value": "O lala 5"
+    }
+];
 
 var taskStatus = {
     "SUCCEEDED" : "bar",
-    "FAILED" : "bar-failed",
-    "RUNNING" : "bar-running",
-    "KILLED" : "bar-killed"
+    "FAILED" : "bar-failed"
+    // "RUNNING" : "bar-running",
+    // "KILLED" : "bar-killed"
 };
 
 var taskNames = [ "D Job", "P Job", "E Job", "A Job", "N Job" ];
@@ -63,6 +101,12 @@ function changeTimeDomain(timeDomainString) {
 	format = "%a %H:%M";
 	gantt.timeDomain([ d3.time.day.offset(getEndDate(), -7), getEndDate() ]);
 	break;
+
+    case "4week":
+    format = "%a %H:%M";
+    gantt.timeDomain([ d3.time.day.offset(getEndDate(), -28), getEndDate() ]);
+    break;
+
     default:
 	format = "%H:%M"
 
