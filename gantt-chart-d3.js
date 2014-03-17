@@ -153,6 +153,9 @@ d3.gantt = function() {
             .attr('dx', function(d) {
                 return (x(d.endDate) - x(d.startDate))/2 - (d.value.length*3);
             })
+            .on('mouseenter', function(d) {
+                tooltip.style("visibility", "visible");
+            })
         ;
 
         bar.on('mouseover', function(event) {
