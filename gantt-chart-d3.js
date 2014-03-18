@@ -131,7 +131,9 @@ d3.gantt = function() {
                     ;
 
                     // format tooltip
-                    var tooltipTexts = '<p>'+'Date: ' + moment().format('lll')+'</p>';
+                    var tooltipTexts =
+                        '<p class="gantt-tooltip-heading">'+'Date: ' +
+                        moment(x.invert(mouseX)).format('lll')+'</p>';
                     d3.selectAll('.gantt-rect').each(function(r){
                         var sd = x(r.startDate)
                         var ed = x(r.endDate)
@@ -141,7 +143,7 @@ d3.gantt = function() {
                     });
 
                     // display the tooltip
-                    tooltip.style("left", (margin.left + mouseX + 20) + 'px');
+                    tooltip.style("left", (margin.left + mouseX + 40) + 'px');
                     tooltip.style("top", mouseY + 'px');
                     tooltip.text();
                     tooltip.html(tooltipTexts);
