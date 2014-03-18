@@ -103,6 +103,58 @@ d3.gantt = function() {
             .attr("transform", "translate(" + margin.left + ", " + margin.top + ")")
         ;
 
+        var line = d3.select('.gantt-chart')
+            .append('line')
+            .attr('class', 'gantt-iLine')
+            .attr('x1', 0)
+            .attr('x2', 0)
+            .attr('y1', 0)
+            .attr('y2', 0)
+            .attr('visibility', 'hidden')
+        ;
+
+        var compoundTooltip = true;
+
+        d3.select('.chart')
+            .on('mousemove', function() {
+                var d3mouse = d3.mouse(this);
+                var mouseX = d3mouse[0] - margin.left;
+                var mouseY = d3mouse[1] - margin.top;
+
+                if (mouseX > 0 && compoundTooltip) {
+                    var line = d3.select('.gantt-iLine')
+                        .attr('x1', mouseX)
+                        .attr('x2', mouseX)
+                        .attr('y1', height-margin.bottom)
+                        .attr('y2', 0)
+                        .attr('visibility', 'visible')
+                    ;
+
+                    // format tooltip
+                    var tooltipTexts = '<p>'+'Date: ' + moment().format('lll')+'</p>';
+                    d3.selectAll('.gantt-rect').each(function(r){
+                        var sd = x(r.startDate)
+                        var ed = x(r.endDate)
+                        if (sd < mouseX && ed > mouseX) {
+                            tooltipTexts +=  '<p>' + r.taskName + ': ' + r.value + '</p>';
+                        }
+                    });
+
+                    // display the tooltip
+                    tooltip.style("left", (margin.left + mouseX + 20) + 'px');
+                    tooltip.style("top", mouseY + 'px');
+                    tooltip.text();
+                    tooltip.html(tooltipTexts);
+                    tooltip.style("visibility", "visible");
+                }
+            })
+            .on('mouseout', function() {
+                var line = d3.select('.gantt-iLine')
+                    .attr('visibility', 'hidden')
+                ;
+            })
+        ;
+
         var bar = svg.selectAll(".chart")
             .data(tasks, keyFunction).enter()
             .append("g")
@@ -110,11 +162,9 @@ d3.gantt = function() {
         ;
 
         bar.append('rect')
-            // .attr("rx", 5)
-            // .attr("ry", 5)
-            .attr("class", function(d){
-                if(taskStatus[d.status] == null){ return "bar";}
-                return taskStatus[d.status];
+            .attr("class", function(d) {
+                if(taskStatus[d.status] == null){ return "gantt-rect bar";}
+                return 'gantt-rect ' + taskStatus[d.status];
             })
             .attr("y", 0)
             .attr("transform", rectTransform)
@@ -128,6 +178,7 @@ d3.gantt = function() {
                 gantt.redraw(tasks);
             })
             .on('mouseenter', function(d) {
+                compoundTooltip = false;
                 tooltip.style("left", (margin.left + x(d.startDate)) + 'px');
                 tooltip.style("top", y(d.taskName)-y.rangeBand()/2 + 'px');
                 tooltip.text(
@@ -138,6 +189,7 @@ d3.gantt = function() {
                 tooltip.style("visibility", "visible");
             })
             .on('mouseleave', function(d) {
+                compoundTooltip = true;
                 tooltip.style("visibility", "hidden");
             })
         ;
@@ -154,6 +206,7 @@ d3.gantt = function() {
                 return (x(d.endDate) - x(d.startDate))/2 - (d.value.length*3);
             })
             .on('mouseenter', function(d) {
+                compoundTooltip = false;
                 tooltip.style("visibility", "visible");
             })
         ;
