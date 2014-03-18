@@ -114,6 +114,7 @@ d3.gantt = function() {
         ;
 
         var compoundTooltip = true;
+        var colors = d3.scale.category20b();
 
         d3.select('.chart')
             .on('mousemove', function() {
@@ -163,10 +164,11 @@ d3.gantt = function() {
             .attr('class', 'gg')
         ;
 
+        var ctr = 0;
         bar.append('rect')
-            .attr("class", function(d) {
-                if(taskStatus[d.status] == null){ return "gantt-rect bar";}
-                return 'gantt-rect ' + taskStatus[d.status];
+            .attr('class', 'gantt-rect')
+            .style("fill", function(d) {
+                return d.color || colors(ctr++);
             })
             .attr("y", 0)
             .attr("transform", rectTransform)
@@ -198,12 +200,9 @@ d3.gantt = function() {
 
         bar.append('text')
             .text(function(d) { return d.value })
+            .attr('class', 'gnatt-label')
             .attr("transform", rectTransform)
             .attr('dy', function(d) {return y.rangeBand() / 2;})
-            .attr('class', function(d) {
-                if(taskStatus[d.status] == null){ return "text-bar";}
-                return 'text-' + taskStatus[d.status];
-            })
             .attr('dx', function(d) {
                 return (x(d.endDate) - x(d.startDate))/2 - (d.value.length*3);
             })
@@ -253,10 +252,6 @@ d3.gantt = function() {
         gg.selectAll('text').transition()
             .attr("transform", rectTransform)
             .attr('dy', function(d) {return y.rangeBand() / 2;})
-            .attr('class', function(d) {
-                if(taskStatus[d.status] == null){ return "text-bar";}
-                return 'text-' + taskStatus[d.status];
-            })
             .attr('dx', function(d) {
                 // to small to be displayed?
                 if ((x(d.endDate) - x(d.startDate))/2 < d.value.length*3)

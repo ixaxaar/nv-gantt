@@ -15,51 +15,11 @@ html,body,#wrapper {
 	shape-rendering: crispEdges;
 }
 
-.bar {
-	fill: #669911;
-	cursor: pointer;
+.gnatt-label {
+	fill: #ffffff;
+	/*stroke: #fff;*/
+	stroke-width: 10px;
 }
-.bar:hover {
-	fill: rgba(166,199,111,1);
-}
-.text-bar {
-	fill: #000000;
-}
-
-.bar-failed {
-	fill: #666666;
-	cursor: pointer;
-}
-.bar-failed:hover {
-	fill: rgba(199,199,199,1);
-}
-.text-bar-failed {
-	fill: #000000;
-}
-
-.bar-running {
-	fill: #669900;
-	cursor: pointer;
-}
-.text-bar-running {
-	fill: #000000;
-}
-
-.bar-succeeded {
-	fill: #669911;
-	cursor: pointer;
-}
-.text-bar-succeeded {
-	fill: #000000;
-}
-
-.bar-killed {
-	fill: #ffbb33;
-}
-.text-bar-killed {
-	fill: #000000;
-}
-
 
 .gantt-tooltip {
 	padding: 10px;

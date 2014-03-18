@@ -3,117 +3,110 @@ var tasks = [
         "startDate":new Date("Mon Mar 1 2014 17:16:02 GMT+0530 (IST)"),
         "endDate":new Date("Mon Mar 2 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"E Job",
-        "status":"SUCCEEDED",
-        "value": "O lala 1"
+        "value": "1"
     },
     {
         "startDate":new Date("Mon Mar 2 2014 17:16:02 GMT+0530 (IST)"),
         "endDate":new Date("Mon Mar 3 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"E Job",
-        "status":"FAILED",
-        "value": "O lala 2"
+        "value": "2"
     }
     ,
     {
         "startDate":new Date("Mon Mar 3 2014 17:16:02 GMT+0530 (IST)"),
         "endDate":new Date("Mon Mar 4 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"E Job",
-        "status":"SUCCEEDED",
-        "value": "O lala 3"
+        "value": "3"
     }
     ,
     {
         "startDate":new Date("Mon Mar 4 2014 17:16:02 GMT+0530 (IST)"),
         "endDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"E Job",
-        "status":"FAILED",
-        "value": "O lala 4"
+        "value": "4"
     }
     ,
     {
         "startDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
         "endDate":new Date("Mon Mar 6 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"E Job",
-        "status":"SUCCEEDED",
-        "value": "O lala 5"
+        "value": "5"
     }
     ,
         {
         "startDate":new Date("Mon Mar 1 2014 17:16:02 GMT+0530 (IST)"),
         "endDate":new Date("Mon Mar 2 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"A Job",
-        "status":"SUCCEEDED",
-        "value": "O lala 1"
+        "value": "1"
     },
     {
         "startDate":new Date("Mon Mar 2 2014 17:16:02 GMT+0530 (IST)"),
         "endDate":new Date("Mon Mar 3 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"A Job",
-        "status":"FAILED",
-        "value": "O lala 2"
+        "value": "2"
     }
     ,
     {
         "startDate":new Date("Mon Mar 3 2014 17:16:02 GMT+0530 (IST)"),
         "endDate":new Date("Mon Mar 4 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"A Job",
-        "status":"SUCCEEDED",
-        "value": "O lala 3"
+        "color":"#736474",
+        "value": "3"
     }
     ,
     {
         "startDate":new Date("Mon Mar 4 2014 17:16:02 GMT+0530 (IST)"),
         "endDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"A Job",
-        "status":"FAILED",
-        "value": "O lala 4"
+        "color":"#927938",
+        "value": "4"
     }
     ,
     {
         "startDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
         "endDate":new Date("Mon Mar 6 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"A Job",
-        "status":"SUCCEEDED",
-        "value": "O lala 5"
+        "color":"#736474",
+        "value": "5"
     }
     ,
         {
         "startDate":new Date("Mon Mar 1 2014 17:16:02 GMT+0530 (IST)"),
         "endDate":new Date("Mon Mar 2 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"N Job",
-        "status":"SUCCEEDED",
-        "value": "O haha 1"
+        "color":"#736474",
+        "value": "1"
     },
     {
         "startDate":new Date("Mon Mar 2 2014 17:16:02 GMT+0530 (IST)"),
         "endDate":new Date("Mon Mar 3 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"N Job",
-        "status":"FAILED",
-        "value": "O haha 2"
+        "color":"#927938",
+        "value": "2"
     }
     ,
     {
         "startDate":new Date("Mon Mar 3 2014 17:16:02 GMT+0530 (IST)"),
         "endDate":new Date("Mon Mar 4 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"N Job",
-        "status":"SUCCEEDED",
-        "value": "O haha 3"
+        "color":"#736474",
+        "value": "3"
     }
     ,
     {
         "startDate":new Date("Mon Mar 4 2014 17:16:02 GMT+0530 (IST)"),
         "endDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"N Job",
-        "status":"FAILED",
-        "value": "O haha 4"
+        "color":"#927938",
+        "value": "4"
     }
     ,
     {
         "startDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
         "endDate":new Date("Mon Mar 6 2014 17:16:02 GMT+0530 (IST)"),
         "taskName":"N Job",
-        "status":"SUCCEEDED",
-        "value": "O haha 5"
+        "color":"#736474",
+        "value": "5"
     }
 ];
 
