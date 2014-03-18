@@ -40,6 +40,6 @@ html,body,#wrapper {
 
 .gantt-iLine {
 	stroke: #F00054;
-	stroke-width: 3;
+	stroke-width: 2;
 	z-index: 999;
 }

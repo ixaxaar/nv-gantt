@@ -34,76 +34,76 @@ var tasks = [
     }
     ,
         {
-        "startDate":new Date("Mon Mar 1 2014 17:16:02 GMT+0530 (IST)"),
-        "endDate":new Date("Mon Mar 2 2014 17:16:02 GMT+0530 (IST)"),
+        "startDate":new Date("Mon Mar 1 2014 17:00:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 2 2014 17:00:02 GMT+0530 (IST)"),
         "taskName":"A Job",
         "value": "1"
     },
     {
-        "startDate":new Date("Mon Mar 2 2014 17:16:02 GMT+0530 (IST)"),
-        "endDate":new Date("Mon Mar 3 2014 17:16:02 GMT+0530 (IST)"),
+        "startDate":new Date("Mon Mar 2 2014 17:00:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 3 2014 17:00:02 GMT+0530 (IST)"),
         "taskName":"A Job",
         "value": "2"
     }
     ,
     {
-        "startDate":new Date("Mon Mar 3 2014 17:16:02 GMT+0530 (IST)"),
-        "endDate":new Date("Mon Mar 4 2014 17:16:02 GMT+0530 (IST)"),
+        "startDate":new Date("Mon Mar 3 2014 17:00:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 4 2014 17:00:02 GMT+0530 (IST)"),
         "taskName":"A Job",
         "color":"#736474",
         "value": "3"
     }
     ,
     {
-        "startDate":new Date("Mon Mar 4 2014 17:16:02 GMT+0530 (IST)"),
-        "endDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
+        "startDate":new Date("Mon Mar 4 2014 17:00:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 5 2014 17:00:02 GMT+0530 (IST)"),
         "taskName":"A Job",
         "color":"#927938",
         "value": "4"
     }
     ,
     {
-        "startDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
-        "endDate":new Date("Mon Mar 6 2014 17:16:02 GMT+0530 (IST)"),
+        "startDate":new Date("Mon Mar 5 2014 17:00:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 6 2014 17:00:02 GMT+0530 (IST)"),
         "taskName":"A Job",
         "color":"#736474",
         "value": "5"
     }
     ,
         {
-        "startDate":new Date("Mon Mar 1 2014 17:16:02 GMT+0530 (IST)"),
-        "endDate":new Date("Mon Mar 2 2014 17:16:02 GMT+0530 (IST)"),
+        "startDate":new Date("Mon Mar 1 2014 8:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 2 2014 8:16:02 GMT+0530 (IST)"),
         "taskName":"N Job",
         "color":"#736474",
         "value": "1"
     },
     {
-        "startDate":new Date("Mon Mar 2 2014 17:16:02 GMT+0530 (IST)"),
-        "endDate":new Date("Mon Mar 3 2014 17:16:02 GMT+0530 (IST)"),
+        "startDate":new Date("Mon Mar 2 2014 8:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 3 2014 8:16:02 GMT+0530 (IST)"),
         "taskName":"N Job",
         "color":"#927938",
         "value": "2"
     }
     ,
     {
-        "startDate":new Date("Mon Mar 3 2014 17:16:02 GMT+0530 (IST)"),
-        "endDate":new Date("Mon Mar 4 2014 17:16:02 GMT+0530 (IST)"),
+        "startDate":new Date("Mon Mar 3 2014 8:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 4 2014 8:16:02 GMT+0530 (IST)"),
         "taskName":"N Job",
         "color":"#736474",
         "value": "3"
     }
     ,
     {
-        "startDate":new Date("Mon Mar 4 2014 17:16:02 GMT+0530 (IST)"),
-        "endDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
+        "startDate":new Date("Mon Mar 4 2014 8:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 5 2014 8:16:02 GMT+0530 (IST)"),
         "taskName":"N Job",
         "color":"#927938",
         "value": "4"
     }
     ,
     {
-        "startDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
-        "endDate":new Date("Mon Mar 6 2014 17:16:02 GMT+0530 (IST)"),
+        "startDate":new Date("Mon Mar 5 2014 8:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 6 2014 8:16:02 GMT+0530 (IST)"),
         "taskName":"N Job",
         "color":"#736474",
         "value": "5"

@@ -115,6 +115,7 @@ d3.gantt = function() {
 
         var compoundTooltip = true;
         var colors = d3.scale.category20b();
+        var prevScale = 0;
 
         d3.select('.chart')
             .on('mousemove', function() {
@@ -156,6 +157,40 @@ d3.gantt = function() {
                     .attr('visibility', 'hidden')
                 ;
             })
+        ;
+
+        d3.select('.chart').call(d3.behavior.zoom().on("zoom", function(){
+                var td = gantt.timeDomain();
+                if (td[0] > 1000000000)
+                    if (d3.event.scale < prevScale)
+                        gantt.timeDomain([td[0]-10000000, td[1]+10000000]);
+                    else
+                        gantt.timeDomain([td[0]+10000000, td[1]-10000000]);
+                gantt.redraw(tasks);
+                prevScale = d3.event.scale;
+                d3.event.sourceEvent.stopPropagation();
+            }))
+        ;
+
+        d3.select('.chart')
+            .on("mousedown.zoom", null)
+            .on("touchstart.zoom", null)
+            .on("touchmove.zoom", null)
+            .on("touchend.zoom", null);
+
+        d3.select('.chart').call(d3.behavior.drag()
+            .on('dragstart', function() {
+                d3.event.sourceEvent.stopPropagation();
+            })
+            .on('drag', function() {
+                d3.event.sourceEvent.stopPropagation();
+                var td = gantt.timeDomain();
+                gantt.timeDomain([td[0]-300000*d3.event.dx, td[1]-300000*d3.event.dx]);
+                gantt.redraw(tasks);
+            })
+            .on('dragend', function() {
+                d3.event.sourceEvent.stopPropagation();
+            }))
         ;
 
         var bar = svg.selectAll(".chart")
