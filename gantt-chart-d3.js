@@ -196,7 +196,7 @@ d3.gantt = function() {
             })
             .on('drag', function() {
                 var td = gantt.timeDomain();
-                var scale = (td[1]-td[0])/100;
+                var scale = (td[1]-td[0])/1000;
 
                 d3.event.sourceEvent.stopPropagation();
                 var td = gantt.timeDomain();
