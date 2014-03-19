@@ -28,9 +28,21 @@ var tasks = [
     ,
     {
         "startDate":new Date("Mon Mar 5 2014 17:16:02 GMT+0530 (IST)"),
-        "endDate":new Date("Mon Mar 6 2014 17:16:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 6 2014 17:00:02 GMT+0530 (IST)"),
         "taskName":"E Job",
         "value": "5"
+    },
+    {
+        "startDate":new Date("Mon Mar 6 2014 17:00:02 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 6 2014 17:00:03 GMT+0530 (IST)"),
+        "taskName":"E Job",
+        "value": "7"
+    },
+        {
+        "startDate":new Date("Mon Mar 6 2014 17:00:03 GMT+0530 (IST)"),
+        "endDate":new Date("Mon Mar 6 2014 17:16:03 GMT+0530 (IST)"),
+        "taskName":"E Job",
+        "value": "6"
     }
     ,
         {
@@ -148,7 +160,9 @@ changeTimeDomain(timeDomainString);
 gantt.tickFormat(function(d) {
     var td = gantt.timeDomain();
     var tdiff = (td[1]-td[0])/1000;
-    if (tdiff < 3600)
+    if (tdiff < 100)
+        return moment(d).format('h:mm:ss a');
+    else if (tdiff < 3600)
         return moment(d).format('h:mm a');
     else if (tdiff < 86400)
         return moment(d).format('h:mm a');
@@ -165,40 +179,35 @@ gantt(tasks);
 function changeTimeDomain(timeDomainString) {
     this.timeDomainString = timeDomainString;
     switch (timeDomainString) {
+    case "1min":
+    gantt.timeDomain([ d3.time.minute.offset(getEndDate(), -1), getEndDate() ]);
+    break;
     case "1hr":
-	format = "%H:%M:%S";
 	gantt.timeDomain([ d3.time.hour.offset(getEndDate(), -1), getEndDate() ]);
 	break;
     case "3hr":
-	format = "%H:%M";
 	gantt.timeDomain([ d3.time.hour.offset(getEndDate(), -3), getEndDate() ]);
 	break;
 
     case "6hr":
-	format = "%H:%M";
 	gantt.timeDomain([ d3.time.hour.offset(getEndDate(), -6), getEndDate() ]);
 	break;
 
     case "1day":
-	format = "%H:%M";
 	gantt.timeDomain([ d3.time.day.offset(getEndDate(), -1), getEndDate() ]);
 	break;
 
     case "1week":
-	format = "%a %H:%M";
 	gantt.timeDomain([ d3.time.day.offset(getEndDate(), -7), getEndDate() ]);
 	break;
 
     case "4week":
-    format = "%a %H:%M";
     gantt.timeDomain([ d3.time.day.offset(getEndDate(), -28), getEndDate() ]);
     break;
 
     default:
-	format = "%H:%M"
 
     }
-    gantt.tickFormat(format);
     gantt.redraw(tasks);
 }
 

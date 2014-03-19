@@ -135,7 +135,7 @@ d3.gantt = function() {
                     // format tooltip
                     var tooltipTexts =
                         '<p class="gantt-tooltip-heading">'+
-                        moment(x.invert(mouseX)).format('lll')+'</p>';
+                        moment(x.invert(mouseX)).format('MMM Do YY, h:mm:ss a')+'</p>';
                     d3.selectAll('.gantt-rect').each(function(r){
                         var sd = x(r.startDate)
                         var ed = x(r.endDate)
@@ -161,14 +161,26 @@ d3.gantt = function() {
 
         d3.select('.chart').call(d3.behavior.zoom().on("zoom", function(){
                 var td = gantt.timeDomain();
-                if (td[0] > 1000000000)
+                var scale = (td[1]-td[0])/10;
+
+                // if (td[1]-td[0] > scale) {
                     if (d3.event.scale < prevScale)
-                        gantt.timeDomain([td[0]-10000000, td[1]+10000000]);
+                        gantt.timeDomain([td[0]-scale, td[1]+scale]);
                     else
-                        gantt.timeDomain([td[0]+10000000, td[1]-10000000]);
-                gantt.redraw(tasks);
-                prevScale = d3.event.scale;
-                d3.event.sourceEvent.stopPropagation();
+                        gantt.timeDomain([td[0]+scale, td[1]-scale]);
+                    gantt.redraw(tasks);
+                    prevScale = d3.event.scale;
+                    d3.event.sourceEvent.stopPropagation();
+                // }
+                // else {
+                //     // just dont re-draw
+                //     if (d3.event.scale < prevScale)
+                //         gantt.timeDomain([td[0]-scale, td[1]+scale]);
+                //     else
+                //         gantt.timeDomain([td[0]+scale, td[1]-scale]);
+                //     prevScale = d3.event.scale;
+                //     d3.event.sourceEvent.stopPropagation();
+                // }
             }))
         ;
 
@@ -183,9 +195,12 @@ d3.gantt = function() {
                 d3.event.sourceEvent.stopPropagation();
             })
             .on('drag', function() {
+                var td = gantt.timeDomain();
+                var scale = (td[1]-td[0])/100;
+
                 d3.event.sourceEvent.stopPropagation();
                 var td = gantt.timeDomain();
-                gantt.timeDomain([td[0]-300000*d3.event.dx, td[1]-300000*d3.event.dx]);
+                gantt.timeDomain([td[0]-scale*d3.event.dx, td[1]-scale*d3.event.dx]);
                 gantt.redraw(tasks);
             })
             .on('dragend', function() {
@@ -242,7 +257,7 @@ d3.gantt = function() {
                 return (x(d.endDate) - x(d.startDate))/2 - (d.value.length*3);
             })
             .on('mouseenter', function(d) {
-                compoundTooltip = false;
+                // compoundTooltip = false;
                 tooltip.style("visibility", "visible");
             })
         ;
