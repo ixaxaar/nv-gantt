@@ -18,10 +18,10 @@ d3.gantt = function() {
     var timeDomainMode = FIT_TIME_DOMAIN_MODE;// fixed or fit
     var taskTypes = [];
     var taskStatus = [];
-    var height = document.body.clientHeight - margin.top - margin.bottom-5;
+    var height = 400 - margin.top - margin.bottom-5;
     var width = document.body.clientWidth - margin.right - margin.left-5;
 
-    var tickFormat = "%H:%M";
+    var tickFormat = function(t){ return moment(t).format('lll'); };
 
     var keyFunction = function(d) {
         return d.startDate + d.taskName + d.endDate;
@@ -38,10 +38,10 @@ d3.gantt = function() {
     var xAxis = d3.svg.axis()
         .scale(x)
         .orient("bottom")
-        .tickFormat(d3.time.format(tickFormat))
+        .tickFormat(tickFormat)
         .tickSubdivide(true)
         .tickSize(8)
-        .tickPadding(8)
+        .tickPadding(16)
     ;
 
     var yAxis = d3.svg.axis()
@@ -71,7 +71,7 @@ d3.gantt = function() {
     var initAxis = function() {
         x = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, width ]).clamp(true);
         y = d3.scale.ordinal().domain(taskTypes).rangeRoundBands([ 0, height - margin.top - margin.bottom ], .1);
-        xAxis = d3.svg.axis().scale(x).orient("bottom").tickFormat(d3.time.format(tickFormat)).tickSubdivide(true)
+        xAxis = d3.svg.axis().scale(x).orient("bottom").tickFormat(tickFormat).tickSubdivide(true)
             .tickSize(8).tickPadding(8);
 
         yAxis = d3.svg.axis().scale(y).orient("left").tickSize(0);
@@ -134,7 +134,7 @@ d3.gantt = function() {
 
                     // format tooltip
                     var tooltipTexts =
-                        '<p class="gantt-tooltip-heading">'+'Date: ' +
+                        '<p class="gantt-tooltip-heading">'+
                         moment(x.invert(mouseX)).format('lll')+'</p>';
                     d3.selectAll('.gantt-rect').each(function(r){
                         var sd = x(r.startDate)
@@ -216,21 +216,21 @@ d3.gantt = function() {
                 gantt.timeDomain([d.startDate, d.endDate])
                 gantt.redraw(tasks);
             })
-            .on('mouseenter', function(d) {
-                compoundTooltip = false;
-                tooltip.style("left", (margin.left + x(d.startDate)) + 'px');
-                tooltip.style("top", y(d.taskName)-y.rangeBand()/2 + 'px');
-                tooltip.text(
-                    'Start: ' + moment(d.startDate).format('lll') +
-                    '\n End: ' + moment(d.endDate).format('lll') +
-                    '\n Value: ' + d.value
-                )
-                tooltip.style("visibility", "visible");
-            })
-            .on('mouseleave', function(d) {
-                compoundTooltip = true;
-                tooltip.style("visibility", "hidden");
-            })
+            // .on('mouseenter', function(d) {
+            //     compoundTooltip = false;
+            //     tooltip.style("left", (margin.left + x(d.startDate)) + 'px');
+            //     tooltip.style("top", y(d.taskName)-y.rangeBand()/2 + 'px');
+            //     tooltip.text(
+            //         'Start: ' + moment(d.startDate).format('lll') +
+            //         '\n End: ' + moment(d.endDate).format('lll') +
+            //         '\n Value: ' + d.value
+            //     )
+            //     tooltip.style("visibility", "visible");
+            // })
+            // .on('mouseleave', function(d) {
+            //     compoundTooltip = true;
+            //     tooltip.style("visibility", "hidden");
+            // })
         ;
 
         bar.append('text')

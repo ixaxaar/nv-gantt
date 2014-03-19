@@ -144,6 +144,22 @@ gantt.margin(margin);
 gantt.timeDomainMode("fixed");
 changeTimeDomain(timeDomainString);
 
+
+gantt.tickFormat(function(d) {
+    var td = gantt.timeDomain();
+    var tdiff = (td[1]-td[0])/1000;
+    if (tdiff < 3600)
+        return moment(d).format('h:mm a');
+    else if (tdiff < 86400)
+        return moment(d).format('h:mm a');
+    else if (tdiff < 604800)
+        return moment(d).format('ddd h:mm a');
+    else if (tdiff < 31536000)
+        return moment(d).format('Do MMM \'YY ');
+    else
+        return moment(d).format('lll');
+});
+
 gantt(tasks);
 
 function changeTimeDomain(timeDomainString) {
