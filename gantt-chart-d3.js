@@ -3,9 +3,10 @@
  * @version 2.1
  */
 
-d3.gantt = function() {
+d3.gantt = function(selection) {
     var FIT_TIME_DOMAIN_MODE = "fit";
     var FIXED_TIME_DOMAIN_MODE = "fixed";
+    var selection = selection || d3.select("body");
 
     var margin = {
         top : 20,
@@ -83,7 +84,7 @@ d3.gantt = function() {
         initAxis();
         var that = this;
 
-        var tooltip = d3.select("body")
+        var tooltip = selection
             .append("div")
             .style("position", "absolute")
             .attr("class" ,"gantt-tooltip")
@@ -91,7 +92,7 @@ d3.gantt = function() {
             .text("a simple tooltip")
         ;
 
-        var svg = d3.select("body")
+        var svg = selection
             .append("svg")
             .attr("class", "chart")
             .attr("width", width + margin.left + margin.right)
@@ -103,7 +104,17 @@ d3.gantt = function() {
             .attr("transform", "translate(" + margin.left + ", " + margin.top + ")")
         ;
 
-        var line = d3.select('.gantt-chart')
+        // this rect will bubble all events to chart
+        selection.select("svg")
+            .append("rect")
+            .attr("class", "overlay")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .attr("transform", "translate(" + margin.left + ", " + margin.top + ")")
+            .style('opacity', '0')
+        ;
+
+        var line = selection.select('.gantt-chart')
             .append('line')
             .attr('class', 'gantt-iLine')
             .attr('x1', 0)
@@ -114,17 +125,19 @@ d3.gantt = function() {
         ;
 
         var compoundTooltip = true;
-        var colors = d3.scale.category20b();
+        var colors = d3.scale.category20();
         var prevScale = 0;
 
-        d3.select('.chart')
+        selection.select('.chart')
             .on('mousemove', function() {
                 var d3mouse = d3.mouse(this);
-                var mouseX = d3mouse[0] - margin.left;
-                var mouseY = d3mouse[1] - margin.top;
+                var mouseX =  d3mouse[0] - margin.left;
+                var mouseY =  d3mouse[1] - margin.top;
+                var mousePageX = d3.event.pageX;
+                var mousePageY = d3.event.pageY;
 
                 if (mouseX > 0 && compoundTooltip) {
-                    var line = d3.select('.gantt-iLine')
+                    var line = selection.select('.gantt-iLine')
                         .attr('x1', mouseX)
                         .attr('x2', mouseX)
                         .attr('y1', height-margin.bottom)
@@ -136,7 +149,7 @@ d3.gantt = function() {
                     var tooltipTexts =
                         '<p class="gantt-tooltip-heading">'+
                         moment(x.invert(mouseX)).format('MMM Do YY, h:mm:ss a')+'</p>';
-                    d3.selectAll('.gantt-rect').each(function(r){
+                    selection.selectAll('.gantt-rect').each(function(r){
                         var sd = x(r.startDate)
                         var ed = x(r.endDate)
                         if (sd < mouseX && ed > mouseX) {
@@ -145,21 +158,22 @@ d3.gantt = function() {
                     });
 
                     // display the tooltip
-                    tooltip.style("left", (margin.left + mouseX + 40) + 'px');
-                    tooltip.style("top", mouseY + 'px');
+                    tooltip.style("left", (mousePageX + 40) + 'px');
+                    tooltip.style("top", mousePageY + 'px');
                     tooltip.text();
                     tooltip.html(tooltipTexts);
                     tooltip.style("visibility", "visible");
                 }
             })
             .on('mouseout', function() {
-                var line = d3.select('.gantt-iLine')
+                var line = selection.select('.gantt-iLine')
                     .attr('visibility', 'hidden')
                 ;
+                tooltip.style("visibility", "hidden");
             })
         ;
 
-        d3.select('.chart').call(d3.behavior.zoom().on("zoom", function(){
+        selection.select('.chart').call(d3.behavior.zoom().on("zoom", function(){
                 var td = gantt.timeDomain();
                 var scale = (td[1]-td[0])/10;
 
@@ -184,13 +198,13 @@ d3.gantt = function() {
             }))
         ;
 
-        d3.select('.chart')
+        selection.select('.chart')
             .on("mousedown.zoom", null)
             .on("touchstart.zoom", null)
             .on("touchmove.zoom", null)
             .on("touchend.zoom", null);
 
-        d3.select('.chart').call(d3.behavior.drag()
+        selection.select('.chart').call(d3.behavior.drag()
             .on('dragstart', function() {
                 d3.event.sourceEvent.stopPropagation();
             })
@@ -218,7 +232,7 @@ d3.gantt = function() {
         bar.append('rect')
             .attr('class', 'gantt-rect')
             .style("fill", function(d) {
-                return d.color || colors(ctr++);
+                return d.color || colors(d.value);
             })
             .attr("y", 0)
             .attr("transform", rectTransform)
@@ -227,7 +241,7 @@ d3.gantt = function() {
                 return (x(d.endDate) - x(d.startDate));
             })
             .on('click', function(d) {
-                var $this = d3.select(this);
+                var $this = selection.select(this);
                 gantt.timeDomain([d.startDate, d.endDate])
                 gantt.redraw(tasks);
             })
@@ -254,7 +268,9 @@ d3.gantt = function() {
             .attr("transform", rectTransform)
             .attr('dy', function(d) {return y.rangeBand() / 2;})
             .attr('dx', function(d) {
-                return (x(d.endDate) - x(d.startDate))/2 - (d.value.length*3);
+                if ((x(d.endDate) - x(d.startDate))/2 < String(d.value).length*5)
+                    return -10000;
+                else return (x(d.endDate) - x(d.startDate))/2 - (String(d.value).length*5);
             })
             .on('mouseenter', function(d) {
                 // compoundTooltip = false;
@@ -286,7 +302,7 @@ d3.gantt = function() {
         initTimeDomain(tasks);
         initAxis();
 
-        var svg = d3.select("svg");
+        var svg = selection.select("svg");
 
         var ganttChartGroup = svg.select(".gantt-chart");
         var gg = ganttChartGroup.selectAll('.gg').data(tasks, keyFunction);
@@ -304,9 +320,9 @@ d3.gantt = function() {
             .attr('dy', function(d) {return y.rangeBand() / 2;})
             .attr('dx', function(d) {
                 // to small to be displayed?
-                if ((x(d.endDate) - x(d.startDate))/2 < d.value.length*3)
+                if ((x(d.endDate) - x(d.startDate))/2 < String(d.value).length*5)
                     return -10000;
-                else return (x(d.endDate) - x(d.startDate))/2 - (d.value.length*3);
+                else return (x(d.endDate) - x(d.startDate))/2 - (String(d.value).length*5);
             })
         ;
 
@@ -361,14 +377,14 @@ d3.gantt = function() {
     gantt.width = function(value) {
         if (!arguments.length)
             return width;
-        width = +value;
+        width = value;
         return gantt;
     };
 
     gantt.height = function(value) {
         if (!arguments.length)
             return height;
-        height = +value;
+        height = value;
         return gantt;
     };
 
